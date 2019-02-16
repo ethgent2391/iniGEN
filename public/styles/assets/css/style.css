@@ -1,0 +1,65 @@
+* {
+    box-sizing: border-box;
+    text-align: center;
+    
+  }
+
+body {
+    background-image: url ("assets/images/papyrus.jpg"); 
+    background-color: #cccccc;
+}
+
+header {float: center;
+    overflow: auto;
+    clear: both;
+}
+
+section {
+    
+    clear: both;
+    float: left;
+    
+}
+
+
+ul { 
+    text-align: center;
+    color:rgb(255, 232, 127);
+}
+
+li {
+    
+    padding: 5px;
+    color: rgb(255, 232, 127);
+}
+
+h1 {
+    font-size: 48px;
+    text-align: center;
+}
+
+h3 {
+    text-align: center;
+    color: rgb(190, 96, 18);
+}
+
+h2 {
+    padding: 20px;
+}
+
+img {
+    width: 150px;
+    height: 150px;
+    float: left;
+    padding: 10px;
+    
+}
+
+#Stats {
+    background-color: rgb(86, 177, 44);
+    padding: 10px;
+}
+
+#score {
+    float: right;
+}
