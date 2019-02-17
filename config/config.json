@@ -8,7 +8,7 @@
   },
   "test": {
     "username": "be5b64005b00a6",
-    "password": "cf74035e",
+    "password":"cf74035e",
     "database": "heroku_f62f801bb094f11",
     "host": "us-cdbr-iron-east-03.cleardb.net",
     "dialect": "mysql"

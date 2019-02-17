@@ -7,6 +7,7 @@ module.exports = function(app) {
     db.IniFile.findAll({}).then(function(dbExamples) {
       res.render("index", {
         file: dbExamples
+    
       });
     });
   });
