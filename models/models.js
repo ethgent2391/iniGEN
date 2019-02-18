@@ -5,13 +5,20 @@ var data = {};
 module.exports = (sequelize, DataTypes) => {
 
     Object.entries(config).forEach(([key, value]) => {
-    
         data[key] = DataTypes.TEXT;
-        
-
     });
 
     var IniFile = sequelize.define( "IniFile", data );
+
+    data = {};
+
+    Object.entries(config).forEach( ([key, value]) => {
+      
+        data[key] = JSON.stringify(value);
+  
+    });
+
+    IniFile.create(data);
     
     return IniFile;
 }
