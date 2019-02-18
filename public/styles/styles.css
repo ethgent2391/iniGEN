@@ -1,3 +1,31 @@
+html, body {
+  text-align: center;
+  height: 100%;
+}
+
+.container {
+  text-align: center;
+  vertical-align: center;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+h1 {
+  font-size: 100px;
+}
+
+p {
+  font-size: 48px;
+  font-family: 'Oswald', sans-serif;
+}
+
+.jumbotron {
+  width: 60%;  
+  margin: auto;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.9);
+}
 .list-group-item {
   line-height: 2.5;
 }
