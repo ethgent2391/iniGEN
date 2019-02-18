@@ -1,5 +1,6 @@
 var fs = require('fs'), ini = require('ini');
-var config = ini.parse(fs.readFileSync( '../../exampleinis/gamev9example.ini', 'utf-8'));
+var path = require('path');
+var config = ini.parse(fs.readFileSync( path.join( __dirname, '../exampleinis/gamev9example.ini'), 'utf-8'));
 var data = {};
 
 module.exports = (sequelize, DataTypes) => {
