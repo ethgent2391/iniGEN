@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
   
     });
 
-    IniFile.create(data);
+    //IniFile.create(data);
     
     return IniFile;
 }

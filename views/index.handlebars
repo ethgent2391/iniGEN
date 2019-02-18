@@ -1,27 +1,19 @@
 <div id="home">
   <div class="container">
     <div class="row">
-      <div class="col-8 offset-2">
-        <h1>{{msg}}</h1>
-        <h2>Please review your selections below</h2>
-        <ul id="input-selection" class="list-group">
-          {{#each config}}
-          <form class="clearfix mb-4" action="POST">
-            <div class="form-group">
-              <label for="setting">Update Setting</label>
-              <textarea class="form-control" id="{{this.id}}" placeholder="{{this.Internationalization}}"></textarea>
-            </div>
-          </form>
-          <li data-id="{{this.id}}" class="list-group-item">
-            <a href="example/{{this.id}}">{{this.text}}</a>
-          </li>
+      <div class="col-12">
+        
+        <h2>Ark INI list</h2>
+       
+          {{#each data}}
+          
+            <div data-id="{{this.id}}" class="rounded bg-success p-3 m-2">{{this.name}}</div>
+
           {{/each}}
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </ul>
+        
       </div>
     </div>
   </div>
 </div>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="/js/index.js"></script>

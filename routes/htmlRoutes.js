@@ -4,10 +4,23 @@ module.exports = function(app) {
   // Load index page
 
   app.get("/", function(req, res) {
+    let data = [];
     db.IniFile.findAll().then( dat => {
-      res.render("index", {
-        config: dat
+
+      Object.entries(dat).forEach(([key, value]) => {
+
+        let t = JSON.parse(value.dataValues['/Script/EngineSettings']);
+
+        
+        console.log( t.GeneralProjectSettings );
+        data.push( { id: value.dataValues.id, name: t.GeneralProjectSettings.ProjectName });
+        
       });
+
+      res.render("index", {
+        data: data
+      });
+
     })
   });
 
