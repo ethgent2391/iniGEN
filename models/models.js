@@ -5,23 +5,45 @@ var data = {};
 
 module.exports = (sequelize, DataTypes) => {
 
-    //initial table maker, if doesn't already exist
+    /*//initial table maker, if doesn't already exist
     Object.entries(config).forEach(([key, value]) => {
         data[key] = DataTypes.TEXT;
     });
 
-    var IniFile = sequelize.define( "IniFile", data );
-
-    data = {};
+    sequelize.define( "IniFile", data );
 
     //default ARK ini file 
     Object.entries(config).forEach( ([key, value]) => {
       
         data[key] = JSON.stringify(value);
   
-    });
+    });*/
 
     //IniFile.create(data);
+
+    function IniFile( q, cb) {
+
+        switch( q ){
+            case "GETNAMES":
+            sequelize.query("SELECT * FROM IniFiles").then( dat => {
+                let data = [];
     
-    return IniFile;
+                dat = dat[0];
+    
+                for( let i = 0; i < dat.length; i++ ){
+                    let t = JSON.parse(dat[i]['/Script/EngineSettings']);
+                    data.push( { id: dat[i].id, name: t.GeneralProjectSettings.ProjectName });
+                }
+                    
+                cb(data);         
+            });
+            break;
+            default:
+            break;
+        }
+        
+
+    }
+        
+   return IniFile ;
 }
