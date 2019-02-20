@@ -1,8 +1,8 @@
 var db = require("../models");
 
 module.exports = function(app) {
-  // Load index page
-
+  
+  //Route to the main landing page
   app.get("/", function(req, res) {
     
     db.IniFile( "GETNAMES", data => {
@@ -14,13 +14,16 @@ module.exports = function(app) {
     })
   });
 
-  // Load example page and pass in an example by id
-  app.get("/example/:id", function(req, res) {
-    db.IniFile.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
-      res.render("example", {
-        example: dbExample
+  //Route to the second page that displays the input fields
+  app.get("/settings", function(req, res) {
+    
+    db.IniFile( "GETNAMES", data => {
+
+      res.render("settings", {
+        data: data
       });
-    });
+
+    })
   });
 
   // Render 404 page for any unmatched routes
