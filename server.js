@@ -16,9 +16,47 @@ app.use(express.static("public"));
 app.engine(
   "handlebars",
   exphbs({
-    defaultLayout: "main"
+    defaultLayout: "main",
+    helpers: { 
+        wut: stuff => {
+            var ret = "";
+
+            if( typeof stuff === "string" ){
+              stuff = JSON.parse( stuff ) ;
+            }
+
+            Object.entries(stuff).forEach(([key, val]) => {
+              
+              if( typeof val === "object"){
+                //nested object processing
+                ret += '<div class="bg-danger offset-1 m-1"><h5>' + key + '</h5>';
+                Object.entries(val).forEach(([key2, val2]) => {
+
+                  if( typeof val2 === "string")
+                    val2 = val2.replace(/"/g, "&#34;");
+                    
+
+                  ret += '<label for="' + key2 + '">' + key2 + '</label>';
+                  ret += '<input id="' + key2 + '" data-id="' + key2 + '" value="' + val2 + '"><br>';
+                });
+
+                ret += '</div>';
+
+              }else{
+                ret += '<label for="' + key + '">' + key + '</label>';
+                ret += '<input id="' + key + '" data-id="' + key + '" value="' + val + '"><br>';
+              }
+            });
+
+            return ret;
+
+     } }
   })
 );
+
+//register handlebars helper functions
+
+
 app.set("view engine", "handlebars");
 
 // Routes
