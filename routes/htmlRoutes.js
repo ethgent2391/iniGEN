@@ -1,29 +1,23 @@
 var db = require("../models");
 
 module.exports = function(app) {
-  
-  //Route to the main landing page
-  app.get("/", function(req, res) {
-    
-    db.IniFile( "GETNAMES", data => {
+  // Load index page
 
+  app.get("/", function(req, res) {  
+    db.IniFile( "GET_ALL", data => {
       res.render("index", {
         data: data
       });
-
     })
   });
 
-  //Route to the second page that displays the input fields
-  app.get("/settings", function(req, res) {
-    
-    db.IniFile( "GETNAMES", data => {
-
+  // Load example page and pass in an example by id
+  app.get("/settings/:id", function(req, res) {
+    db.IniFile( "GET_BY_ID" + req.params.id, data => {
       res.render("settings", {
         data: data
       });
-
-    })
+    });
   });
 
   // Render 404 page for any unmatched routes
