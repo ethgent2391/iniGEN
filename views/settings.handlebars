@@ -5,11 +5,22 @@
         
         <h2>Ark INI list</h2>
        
-          {{#each data}}
-          
-            <div data-id="{{this.id}}" class="rounded bg-success p-3 m-2">{{this.name}}</div>
 
-          {{/each}}
+          
+            <div>
+
+           <form>
+              {{#each data}}
+            
+                <div class="rounded bg-primary m-2">
+                  <h3>{{@key}} {{this}}</h3>
+                {{#wut this}}{{/wut}} <!-- HELPER FUNCTION, REFER TO SERVER.JS TO INSPECT / EDIT FUNCTIONALITY -->
+                </div>
+        
+              {{/each}}
+            </form>
+
+          </div>
         
       </div>
     </div>
