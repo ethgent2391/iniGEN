@@ -2,13 +2,7 @@
 <div id="home">
   <div class="container">
     <div class="row">
-      <div id="main-list" class="col-12">
-        
-        <h2>Ark INI list</h2>
-       
-          {{#each data}}
-          
-            <div data-id="{{this.id}}" class="ini-select rounded bg-success p-3 m-2">{{this.name}}</div>
+      <div class="col-12">
        
               <div class='container'>
                 <div class = 'jumbotron'>
@@ -19,15 +13,15 @@
                         Happy Gaming!
                     </p>  
                     <br>
-                    <form class="form-horizontal">
+                    <form id="ini-form" class="form-horizontal">
                         <div class="form-group">
                             <div class="col-sm-12">
                                 <input class="btn btn-primary animated flipInY" type="file">
                             </div>
                         </div>
-                        <div class = "btn btn-primary animated delay-2s flipInX">
+                        <button type="submit" class = "btn btn-primary animated delay-2s flipInX">
                             Submit
-                        </div>
+                        </button>
                     </form>
                 </div>    
             </div>

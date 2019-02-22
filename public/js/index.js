@@ -1,3 +1,5 @@
+
+
 // Get references to page elements
 var $exampleText = $("#example-text");
 var $exampleDescription = $("#example-description");
@@ -16,14 +18,65 @@ var API = {
       
     });
   }
-};
+}
 
 $(
-  $("#main-list").on("click", ".ini-select", function(){
+  /*$("#main-list").on("click", ".ini-select", function(){
 
      API.getExamples($(this).attr("data-id"));
+  })*/
+
+  $(document).on("submit", "#ini-form" ,e => {
+    e.preventDefault();
+
+    
+    let reader = new FileReader(), fileData;
+
+    
+
+    var xhr = new XMLHttpRequest();
+
+    xhr.onload = function(e) {
+      fileData = xhr.response;
+      /* ... */
+    }
+    xhr.open("GET",  $("input[type=file]").val(), true ); 
+    xhr.responseType = "blob";
+    xhr.send();
+
+    console.log(fileData)
+
   })
 );
+
+// refreshExamples gets new examples from the db and repopulates the list
+var refreshExamples = function() {
+  API.getExamples().then(function(data) {
+    var $examples = data.map(function(example) {
+      var $a = $("<a>")
+        .text(example.text)
+        .attr("href", "/example/" + example.id);
+
+      var $li = $("<li>")
+        .attr({
+          class: "list-group-item",
+          "data-id": example.id
+        })
+        .append($a);
+
+      var $button = $("<button>")
+        .addClass("btn btn-danger float-right delete")
+        .text("ｘ");
+
+      $li.append($button);
+
+      return $li;
+    });
+
+    $exampleList.empty();
+    $exampleList.append($examples);
+  });
+};
 
 // handleFormSubmit is called whenever we submit a new example
 // Save the new example to the db and refresh the list

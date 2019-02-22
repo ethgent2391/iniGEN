@@ -1,4 +1,13 @@
 var db = require("../models");
+var multer = require('multer');
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+      cb(null, './uploads')
+  },
+  filename: function (req, file, cb) {
+      cb(null, file.fieldname + '-' + Date.now())
+  }
+});
 
 module.exports = function(app) {
   // Load index page
@@ -16,6 +25,11 @@ module.exports = function(app) {
       });
       
     });
+  });
+
+  app.post("/upload", function(req, res) {
+
+    console.log( req.body );
   });
 
   // Render 404 page for any unmatched routes
