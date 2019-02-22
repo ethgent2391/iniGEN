@@ -9,10 +9,12 @@ module.exports = function(app) {
 
   // Load example page and pass in an example by id
   app.get("/settings/:id", function(req, res) {
+
     db.IniFile( "GET_BY_ID" + req.params.id, data => {
       res.render("settings", {
         data: data
       });
+      
     });
   });
 
