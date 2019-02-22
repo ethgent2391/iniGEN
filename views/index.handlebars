@@ -1,13 +1,13 @@
 <div id="home">
   <div class="container">
     <div class="row">
-      <div class="col-12">
+      <div id="main-list" class="col-12">
         
         <h2>Ark INI list</h2>
        
           {{#each data}}
           
-            <div data-id="{{this.id}}" class="rounded bg-success p-3 m-2">{{this.name}}</div>
+            <div data-id="{{this.id}}" class="ini-select rounded bg-success p-3 m-2">{{this.name}}</div>
 
           {{/each}}
         
@@ -16,4 +16,4 @@
   </div>
 </div>
 
-<script src="/js/index.js"></script>
+
