@@ -58,9 +58,7 @@ app.engine(
 
 app.set("view engine", "handlebars");
 
-// Routes
-require("./routes/apiRoutes")(app);
-require("./routes/htmlRoutes")(app);
+
 
 var syncOptions = { force: false };
 
@@ -79,6 +77,9 @@ db.sequelize.sync(syncOptions).then(function() {
       PORT
     );
   });
+
+  // Routes
+require("./routes/htmlRoutes")(app);
 });
 
 module.exports = app;

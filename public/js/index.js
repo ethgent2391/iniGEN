@@ -24,25 +24,28 @@ $(
 
   $(document).on("submit", "#ini-form" ,e => {
     e.preventDefault();
+  
+      let file = document.querySelector('[type=file]').files[0], data;
+      fr = new FileReader();
+      fr.onload = () => {
+        data = fr.result;
+        
+        $.ajax({
+          url: "/upload",
+          type: 'POST',
+          data: {food: data },
+          dataType: "text",
+          processData: true
+          
+          
+       })
+      }
+      fr.readAsText(file);
 
-    
-    let reader = new FileReader(), fileData;
 
-    
-
-    var xhr = new XMLHttpRequest();
-
-    xhr.onload = function(e) {
-      fileData = xhr.response;
-      /* ... */
-    }
-    xhr.open("GET",  $("input[type=file]").val(), true ); 
-    xhr.responseType = "blob";
-    xhr.send();
-
-    console.log(fileData)
-
-  })
+        
+      })
+ 
 );
 
 // refreshExamples gets new examples from the db and repopulates the list
