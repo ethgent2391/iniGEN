@@ -1,17 +1,6 @@
-
-<div id="home">
-  <div class="container">
-    <div class="row">
-      <div id="main-list" class="col-12">
-        
-        <h2>Ark INI list</h2>
-       
-          {{#each data}}
-          
-            <div data-id="{{this.id}}" class="ini-select rounded bg-success p-3 m-2">{{this.name}}</div>
        
               <div class='container'>
-                <div class = 'jumbotron'>
+                <div class = 'jumbotron shadow-lg'>
                     <h1 class = "text-danger">iniGEN</h1>
                     <p class="lead">
                         Welcome to the iniGEN homepage!  <br>
@@ -25,7 +14,7 @@
                                 <input class="btn btn-primary animated flipInY" type="file">
                             </div>
                         </div>
-                        <div class = "btn btn-primary animated delay-2s flipInX">
+                        <div class = "btn btn-primary animated delay-2s flipInX" id="main-list">
                             Submit
                         </div>
                     </form>
