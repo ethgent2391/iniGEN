@@ -20,6 +20,7 @@ var API = {
 
 $(
   $("#main-list").on("click", ".ini-select", function(){
+
      API.getExamples($(this).attr("data-id"));
   })
 );
