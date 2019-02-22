@@ -1,13 +1,5 @@
 var db = require("../models");
-var multer = require('multer');
-var storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-      cb(null, './uploads')
-  },
-  filename: function (req, file, cb) {
-      cb(null, file.fieldname + '-' + Date.now())
-  }
-});
+var cors = require('cors');
 
 module.exports = function(app) {
   // Load index page
@@ -19,7 +11,7 @@ module.exports = function(app) {
   // Load example page and pass in an example by id
   app.get("/settings/:id", function(req, res) {
 
-    db.IniFile( "GET_BY_ID" + req.params.id, data => {
+    db.IniFile( "GET_BY_ID" + req.params.id, 0, data => {
       res.render("settings", {
         data: data
       });
@@ -27,9 +19,16 @@ module.exports = function(app) {
     });
   });
 
-  app.post("/upload", function(req, res) {
+  app.post("/upload", cors() ,function(req, res) {
 
-    console.log( req.body );
+    db.IniFile( "INSERT_INI", req.body.food, data => {
+      
+      
+      
+    });
+    
+
+    
   });
 
   // Render 404 page for any unmatched routes
