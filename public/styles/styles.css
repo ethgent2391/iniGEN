@@ -29,3 +29,6 @@ p {
 .list-group-item {
   line-height: 2.5;
 }
+#settingcontent {
+  width: 100%;
+}
