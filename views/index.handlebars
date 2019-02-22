@@ -1,3 +1,4 @@
+
 <div id="home">
   <div class="container">
     <div class="row">
@@ -8,12 +9,28 @@
           {{#each data}}
           
             <div data-id="{{this.id}}" class="ini-select rounded bg-success p-3 m-2">{{this.name}}</div>
+       
+              <div class='container'>
+                <div class = 'jumbotron'>
+                    <h1 class = "text-danger">iniGEN</h1>
+                    <p class="lead">
+                        Welcome to the iniGEN homepage!  <br>
+                        Upload the ini file of your choice using the buttons below.  <br>
+                        Happy Gaming!
+                    </p>  
+                    <br>
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <input class="btn btn-primary animated flipInY" type="file">
+                            </div>
+                        </div>
+                        <div class = "btn btn-primary animated delay-2s flipInX">
+                            Submit
+                        </div>
+                    </form>
+                </div>    
+            </div>
 
-          {{/each}}
-        
-      </div>
-    </div>
-  </div>
-</div>
 
-<script src="/js/index.js"></script>
+

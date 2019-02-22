@@ -21,21 +21,21 @@ app.engine(
         wut: stuff => {
             var ret = "";
 
-            if( typeof stuff === "string" ){
-              stuff = JSON.parse( stuff ) ;
-            }
+            if( typeof stuff === "string" )
+              stuff = JSON.parse( stuff );
 
+            //outer nest loop
             Object.entries(stuff).forEach(([key, val]) => {
               
               if( typeof val === "object"){
-                //nested object processing
+                //nested object processing for object blocks
                 ret += '<div class="bg-danger offset-1 m-1"><h5>' + key + '</h5>';
                 Object.entries(val).forEach(([key2, val2]) => {
 
+                  //replace double quotes with hex 
                   if( typeof val2 === "string")
                     val2 = val2.replace(/"/g, "&#34;");
                     
-
                   ret += '<label for="' + key2 + '">' + key2 + '</label>';
                   ret += '<input id="' + key2 + '" data-id="' + key2 + '" value="' + val2 + '"><br>';
                 });
@@ -47,9 +47,7 @@ app.engine(
                 ret += '<input id="' + key + '" data-id="' + key + '" value="' + val + '"><br>';
               }
             });
-
             return ret;
-
      } }
   })
 );
