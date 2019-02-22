@@ -19,8 +19,8 @@ var API = {
 };
 
 $(
-  $("#main-list").on("click", ".ini-select", function(){
-
+  $(document).on("click", "#main-list", function(){
+    console.log("poop");
      API.getExamples($(this).attr("data-id"));
   })
 );
