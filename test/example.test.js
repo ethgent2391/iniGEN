@@ -1,6 +1,6 @@
 var chai = require("chai");
 var chaiHttp = require("chai-http");
-var server = require("../server");
+var server = require("../server.js");
 var db = require("../models");
 var expect = chai.expect;
 
@@ -19,7 +19,7 @@ describe("GET /api/examples", function() {
 
   it("should find all examples", function(done) {
     // Add some examples to the db to test with
-    db.Example.bulkCreate([
+    db.IniFile.bulkCreate([
       { text: "First Example", description: "First Description" },
       { text: "Second Example", description: "Second Description" }
     ]).then(function() {
