@@ -1,10 +1,11 @@
 <div class='container'>
     <div class = 'jumbotron shadow-lg' id = 'settingcontent'>
         <h1 class = "text-danger">iniGEN</h1>
+        <h3 class = "">Select your standardized file from the choices below.</h3>
        
            {{#each data}}
           
-            <div data-id="{{this.id}}" class="ini-select rounded bg-success p-3 m-2">{{this.name}}</div>
+            <div data-id="{{this.id}}" class="ini-select rounded bg-info p-3 m-2 font-weight-bold animated bounceInDown">{{this.name}}</div>
           {{/each}}
     
     </div>    

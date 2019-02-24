@@ -30,21 +30,21 @@ app.engine(
               
               if( typeof val === "object"){
                 //nested object processing for object blocks
-                ret += '<div class="bg-danger offset-1 m-1"><h5>' + key + '</h5>';
+                ret += '<div class="rounded bg-info offset-1 m-1"><h5>' + key + '</h5>';
                 Object.entries(val).forEach(([key2, val2]) => {
 
                   //replace double quotes with hex 
                   if( typeof val2 === "string")
                     val2 = val2.replace(/"/g, "&#34;");
                     
-                  ret += '<label for="' + key2 + '">' + key2 + '</label>';
+                  ret += '<label class="font-weight-bold" for="' + key2 + '">' + key2 + '</label>';
                   ret += '<input id="' + key2 + '" data-id="' + key2 + '" value="' + val2 + '"><br>';
                 });
 
                 ret += '</div>';
 
               }else{
-                ret += '<label for="' + key + '">' + key + '</label>';
+                ret += '<label class="font-weight-bold" for="' + key + '">' + key + '</label>';
                 ret += '<input id="' + key + '" data-id="' + key + '" value="' + val + '"><br>';
               }
             });
