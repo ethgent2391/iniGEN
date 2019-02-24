@@ -54,11 +54,7 @@ app.engine(
 );
 
 //register handlebars helper functions
-
-
 app.set("view engine", "handlebars");
-
-
 
 var syncOptions = { force: false };
 

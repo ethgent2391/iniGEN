@@ -5,8 +5,6 @@ var config = ini.parse(fs.readFileSync( path.join( __dirname, '../exampleinis/ga
 
 module.exports = (sequelize, DataTypes) => {
 
-    
-
     function IniFile( q, newFile ,cb) {
 
         let stop, en = 0;
@@ -25,22 +23,18 @@ module.exports = (sequelize, DataTypes) => {
             sequelize.query("SELECT * FROM IniFiles").then( dat => {
 
                 let data = [];
-
                 dat = dat[0];
 
                 for( let i = 0; i < dat.length; i++ ){
                     let t = JSON.parse(dat[i]['/Script/EngineSettings']);
                     data.push( { id: dat[i].id, name: t.GeneralProjectSettings.ProjectName });
-                }
-                    
+                } 
                 cb(data); 
             });
             break;
             case "GET_BY_ID":
             sequelize.query("SELECT * FROM IniFiles WHERE id = " + en ).then( dat => {
-    
-                dat = dat[0][0];            
-                    
+                dat = dat[0][0];              
                 cb(dat);
             });
             break;
@@ -52,21 +46,17 @@ module.exports = (sequelize, DataTypes) => {
             //initial table maker, if doesn't already exist
             Object.entries(stuff).forEach(([key, value]) => {
                 data[key] = DataTypes.TEXT;
-             
-                
             });
 
             let newEntry = sequelize.define( "IniFile", data );
 
-            //default ARK ini file 
+            //default ARK ini file
             Object.entries(stuff).forEach( ([key, value]) => {
-            
                 data[key] = JSON.stringify(value);
-                
-        
             });
 
             newEntry.create(data);
+            cb(data);
        
             break;
             default:

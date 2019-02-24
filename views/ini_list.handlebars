@@ -1,0 +1,11 @@
+<div class='container'>
+    <div class = 'jumbotron shadow-lg' id = 'settingcontent'>
+        <h1 class = "text-danger">iniGEN</h1>
+       
+           {{#each data}}
+          
+            <div data-id="{{this.id}}" class="ini-select rounded bg-success p-3 m-2">{{this.name}}</div>
+          {{/each}}
+    
+    </div>    
+</div>
