@@ -50,7 +50,7 @@ app.engine(
               }else{
 
                 ret += '<label class="font-weight-bold" for="' + key + '">' + key + '</label>';
-                ret += '<input id="' + key + '" data-id="' + key + '" value="' + val + '"><br>';
+                ret += '<input class="outer-field" id="' + key + '" data-id="' + key + '" value="' + val + '"><br>';
 
               }
             });

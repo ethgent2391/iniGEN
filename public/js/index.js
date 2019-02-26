@@ -80,6 +80,8 @@ $(
       data: {data: constructedFile, id: $("#settingcontent").attr( 'data-id') },
       processData: true,
       success: (da) => {
+
+        console.log(da);
       
         da = da.replace(/\\/g, '');
         da = da.replace(/"/g, '');

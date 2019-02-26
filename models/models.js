@@ -65,7 +65,7 @@ module.exports = (sequelize, DataTypes) => {
 
             data = {};
  
-
+               
             //initial table maker, if doesn't already exist
             Object.entries(newFile).forEach(([key, value]) => {
                 data[key] = DataTypes.TEXT;
@@ -74,7 +74,7 @@ module.exports = (sequelize, DataTypes) => {
             let upEntry = sequelize.define( "IniFile", data );
 
             //default ARK ini file
-            Object.entries(newFile ).forEach( ([key, value]) => {
+            Object.entries(newFile).forEach( ([key, value]) => {
                 data[key] = JSON.stringify(value);
             });
 

@@ -10,7 +10,7 @@ module.exports = function(app) {
 
   app.post("/su", function(req, res) {
     
-    db.IniFile( "UPDATE" + req.body.id, req.body.data, data => {
+    db.IniFile( "UPDATE" + req.body.id, req.body.data, function(data){
       
       res.send(ini.stringify(req.body.data));
       
