@@ -1,4 +1,4 @@
-var db = require("../models");
+var db = require("../models"), ini = require('ini');
 var cors = require('cors');
 
 module.exports = function(app) {
@@ -8,11 +8,21 @@ module.exports = function(app) {
     res.render("index");
   });
 
+  app.post("/su", function(req, res) {
+    
+    db.IniFile( "UPDATE" + req.body.id, req.body.data, data => {
+      
+      res.send(ini.stringify(req.body.data));
+      
+    });
+
+  })
+
   // Load example page and pass in an example by id
   app.post("/settings", function(req, res) {
-    console.log(req.body);
+  
     db.IniFile( "GET_BY_ID" + req.body.id, 0, data => {
-      
+     
       res.render("settings", {
         layout: false,
         data: data
@@ -32,9 +42,7 @@ module.exports = function(app) {
   });
 
   app.post("/upload", cors() ,function(req, res) {
-
     db.IniFile( "INSERT_INI", req.body.food, data => {
-      
         res.render( 'settings', { layout: false, data: data});
     });
   });
