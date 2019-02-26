@@ -21,16 +21,20 @@ app.engine(
     helpers: { 
         wut: stuff => {
             var ret = "";
-
+            
+            
             if( typeof stuff === "string" )
               stuff = JSON.parse( stuff );
 
+        
             //outer nest loop
             Object.entries(stuff).forEach(([key, val]) => {
               
               if( typeof val === "object"){
                 //nested object processing for object blocks
+
                 ret += '<div class="rounded bg-info offset-1 m-1"><h5>' + key + '</h5>';
+
                 Object.entries(val).forEach(([key2, val2]) => {
 
                   //replace double quotes with hex 
@@ -44,8 +48,10 @@ app.engine(
                 ret += '</div>';
 
               }else{
+
                 ret += '<label class="font-weight-bold" for="' + key + '">' + key + '</label>';
                 ret += '<input id="' + key + '" data-id="' + key + '" value="' + val + '"><br>';
+
               }
             });
             return ret;

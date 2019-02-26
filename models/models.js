@@ -1,7 +1,5 @@
-var fs = require('fs'), ini = require('ini');
-var path = require('path');
-var config = ini.parse(fs.readFileSync( path.join( __dirname, '../exampleinis/gamev9example.ini'), 'utf-8'));
-
+var ini = require('ini');
+var data;
 
 module.exports = (sequelize, DataTypes) => {
 
@@ -20,45 +18,80 @@ module.exports = (sequelize, DataTypes) => {
 
         switch( q ){
             case "GET_ALL":
-            sequelize.query("SELECT * FROM IniFiles").then( dat => {
+                sequelize.query("SELECT * FROM IniFiles").then( dat => {
 
-                let data = [];
-                dat = dat[0];
+                    data = [];
+                    dat = dat[0];
 
-                for( let i = 0; i < dat.length; i++ ){
-                    let t = JSON.parse(dat[i]['/Script/EngineSettings']);
-                    data.push( { id: dat[i].id, name: t.GeneralProjectSettings.ProjectName });
-                } 
-                cb(data); 
-            });
+                    for( let i = 0; i < dat.length; i++ ){
+                        let t = JSON.parse(dat[i]['/Script/EngineSettings']);
+                        data.push( { id: dat[i].id, name: t.GeneralProjectSettings.ProjectName });
+                    } 
+                    cb(data); 
+                });
             break;
             case "GET_BY_ID":
-            sequelize.query("SELECT * FROM IniFiles WHERE id = " + en ).then( dat => {
-                dat = dat[0][0];              
-                cb(dat);
-            });
+                sequelize.query("SELECT * FROM IniFiles WHERE id = " + en ).then( dat => {
+                    dat = dat[0][0];
+                    cb(dat);
+                });
             break;
             case "INSERT_INI":
-      
-            let stuff = ini.parse( newFile );
-            let data = {};
+
+                data = {};
+                
+                let stuff = ini.parse( newFile );
+
+                //initial table maker, if doesn't already exist
+                Object.entries(stuff).forEach(([key, value]) => {
+                    data[key] = DataTypes.TEXT;
+                });
+
+                let newEntry = sequelize.define( "IniFile", data );
+
+                //default ARK ini file
+                Object.entries(stuff).forEach( ([key, value]) => {
+                    data[key] = JSON.stringify(value);
+                });
+
+
+
+                newEntry.create(data);
+
+                cb(data);
+       
+            break;
+            case "UPDATE":
+
+            data = {};
+ 
 
             //initial table maker, if doesn't already exist
-            Object.entries(stuff).forEach(([key, value]) => {
+            Object.entries(newFile).forEach(([key, value]) => {
                 data[key] = DataTypes.TEXT;
             });
 
-            let newEntry = sequelize.define( "IniFile", data );
+            let upEntry = sequelize.define( "IniFile", data );
 
             //default ARK ini file
-            Object.entries(stuff).forEach( ([key, value]) => {
+            Object.entries(newFile ).forEach( ([key, value]) => {
                 data[key] = JSON.stringify(value);
             });
 
-            newEntry.create(data);
+     
+
+             upEntry.update(
+                    data
+              , {
+                where: { id: en },
+                returning: true
+                
+              })
+              
+
             cb(data);
-       
-            break;
+
+            break
             default:
                 console.log( q + " is an invalid command.");
             break;
