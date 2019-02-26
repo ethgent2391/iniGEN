@@ -3,12 +3,17 @@
         <h1 class = "text-danger">iniGEN</h1>
         <h3 class = "">Select your standardized file from the choices below.</h3>
        
-           {{#each data}}
-          
+        {{#each data}}
             <div data-id="{{this.id}}" class="ini-select rounded bg-info p-3 m-2 font-weight-bold animated bounceInDown">{{this.name}}</div>
-          {{/each}}
+        {{/each}}
 
-          
+        <div>
+            <a href = "https://quiet-basin-26647.herokuapp.com/">
+                <button class = "btn btn-primary animated delay-1s flipInX">
+                    Return to Main Page
+                </button>
+          </a> 
+        </div>
     
     </div>    
 </div>
