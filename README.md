@@ -1,6 +1,8 @@
 # iniGEN
 .ini server setting generator
 
+## Link to App - https://quiet-basin-26647.herokuapp.com/
+
 ### Project Presentation - https://docs.google.com/presentation/d/1JJq7ngYTu8rGqoCuPU_OS3dmqrWoOivM5C0xUOGYq3o/edit?usp=sharing
 
 ## Overview
