@@ -3,8 +3,6 @@
 
 ## Link to App - https://quiet-basin-26647.herokuapp.com/
 
-### Project Presentation - https://docs.google.com/presentation/d/1JJq7ngYTu8rGqoCuPU_OS3dmqrWoOivM5C0xUOGYq3o/edit?usp=sharing
-
 ## Overview
 
 iniGEN is an application created for the video game server community.  It enables game hosts to easily change game settings and save these changes for future reproduction.
